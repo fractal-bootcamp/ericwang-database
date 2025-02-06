@@ -19,7 +19,7 @@ model Book {
   author        Author  @relation(fields: [authorId], references: [id])
   isbn          String
   authorId      String  @db.Uuid
-  Genre         Genre[]
+  genres        Genre[]
   currentMember Member  @relation(fields: [memberId], references: [id])
   memberId      String  @db.Uuid
 }
@@ -28,13 +28,13 @@ model Author {
   id        String @id @default(uuid()) @db.Uuid
   name      String
   biography String
-  Book      Book[]
+  books      Book[]
 }
 
 model Genre {
   id   String @id @default(uuid()) @db.Uuid
   name String
-  Book Book[]
+  books Book[]
 }
 
 model Member {
@@ -42,5 +42,5 @@ model Member {
   name    String
   email   String
   address String
-  Book    Book[]
+  books   Book[]
 }
